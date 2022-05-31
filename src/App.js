@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useReducer} from 'react'
+
+const reducer = (counter, {type, payload}) => {
+  switch(type){
+    case "INCREMENT": {
+      return counter  + payload;
+    }
+    case "DECREMENT": {
+      return counter - payload;
+    }
+    default: {
+      return counter;
+    }
+  }
+}
 
 function App() {
+  const [counter, dispatch] = useReducer(reducer, 0)
+  // need a state variable with initial value = 0
+  // need a single place where this state changess can be monitored
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Counter: {counter}
+      <div>
+        <button onClick={()=> dispatch({type: "DECREMENT", payload: 25})}>-</button>
+        <button onClick={()=> dispatch({type: "INCREMENT", payload: 100})}>+</button>
+      </div>
     </div>
   );
 }
