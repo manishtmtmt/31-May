@@ -1,14 +1,18 @@
-import './App.css';
-import UseReducer from './Components/UseReducer';
-
-
-
+import "./App.css";
+import Body from "./Components/Body";
+import Navbar from "./Components/Navbar";
+import { AuthProvider } from "./Context/AuthContext";
+import { CartProvider } from "./Context/CartContext";
 
 function App() {
-
   return (
     <div className="App">
-      <UseReducer />
+      <AuthProvider>
+        <CartProvider>
+          <Navbar />
+          <Body />
+        </CartProvider>
+      </AuthProvider>
     </div>
   );
 }
