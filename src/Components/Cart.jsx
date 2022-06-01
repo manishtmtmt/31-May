@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
 
 const Cart = () => {
-    const {count, setCount} = useContext(CartContext)
+    const {addProduct} = useContext(CartContext)
   return (
     <div>Cart
-        <button onClick={()=> setCount(count+1)}>add to cart</button>
+        <button onClick={addProduct}>add to cart</button>
     </div>
   )
 }
